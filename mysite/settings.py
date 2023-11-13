@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-gvg5cw6)p!x@zy#06*^kuc$1^awc69l#k2iwb95ps6xtx0q^+2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*'] #フロントとの連携のために全て受け入れる。
 
 
 # Application definition
@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "accounts", #作ったアプリ
     "rest_framework", #DRF
+    'corsheaders', #フロントとの連携のため
+    
 ]
 
 MIDDLEWARE = [
@@ -49,6 +51,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'corsheaders.middleware.CorsMiddleware',  #フロントとの連携のため
 ]
 
 ROOT_URLCONF = "mysite.urls"
@@ -117,3 +120,5 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+CORS_ALLOW_ALL_ORIGINS = True
